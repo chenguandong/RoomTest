@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -9,32 +8,41 @@
 
     <Button
         android:id="@+id/insertButton"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="insert"
-        />
+        android:layout_width="match_parent"
+        android:text="insert" />
 
     <Button
         android:id="@+id/deleteButton"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="delete"
-        />
+        android:layout_width="match_parent"
+        android:text="delete" />
 
     <Button
         android:id="@+id/update"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="update"
-        />
+        android:layout_width="match_parent"
+        android:text="update" />
 
     <Button
         android:id="@+id/querytButton"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="query"
+        android:layout_width="match_parent"
+        android:text="query" />
+
+    <Button
+        android:id="@+id/bookInsertButton"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="book insert"
+        android:visibility="gone"
         />
 
-
+    <Button
+        android:id="@+id/bookQuerytButton"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="book query"
+        android:visibility="gone" />
 
 </LinearLayout>

@@ -1,8 +1,9 @@
-package com.xindun.testroom;
+package com.xindun.testroom.db.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 /**
@@ -11,7 +12,7 @@ import androidx.room.PrimaryKey;
  * @desc
  * @email chenguandong@outlook.com
  */
-@Entity
+@Entity(tableName = "user")
 public class User {
   @PrimaryKey(autoGenerate = true)
   private int uid;
@@ -19,11 +20,25 @@ public class User {
   private String firstName;
   @ColumnInfo(name = "last_name")
   private String lastName;
+/*  @ColumnInfo(name = "age")
+  private Integer age;*/
 
+  public User() {
+  }
+
+  @Ignore
   public User(String firstName, String lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
   }
+
+
+/*  @Ignore
+  public User(String firstName, String lastName, Integer age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+  }*/
 
   public String getFirstName() {
     return firstName;
@@ -48,6 +63,14 @@ public class User {
   public void setUid(int uid) {
     this.uid = uid;
   }
+
+/*  public Integer getAge() {
+    return age;
+  }
+
+  public void setAge(Integer age) {
+    this.age = age;
+  }*/
 
   @NonNull
   @Override
