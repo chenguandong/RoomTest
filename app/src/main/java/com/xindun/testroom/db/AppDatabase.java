@@ -1,5 +1,7 @@
 package com.xindun.testroom.db;
 
+import com.tencent.wcdb.database.SQLiteCipherSpec;
+import com.tencent.wcdb.room.db.WCDBOpenHelperFactory;
 import com.xindun.testroom.MyApp;
 import com.xindun.testroom.db.dao.UserDao;
 import com.xindun.testroom.db.entity.User;
@@ -24,6 +26,15 @@ public abstract class AppDatabase extends RoomDatabase {
     if (database == null) {
       synchronized (AppDatabase.class) {
         if (database == null) {
+          SQLiteCipherSpec cipherSpec = new SQLiteCipherSpec()  // 指定加密方式，使用默认加密可以省略
+              .setPageSize(4096).setKDFIteration(64000);
+
+          WCDBOpenHelperFactory factory = new WCDBOpenHelperFactory().passphrase("passphrase".getBytes())  // 指定加密DB密钥，非加密DB去掉此行
+              .cipherSpec(cipherSpec)               // 指定加密方式，使用默认加密可以省略
+              .writeAheadLoggingEnabled(true)       // 打开WAL以及读写并发，可以省略让Room决定是否要打开
+              .asyncCheckpointEnabled(true);        // 打开异步Checkpoint优化，不需要可以省略
+
+
           database = Room.databaseBuilder(MyApp.getInstance().getApplicationContext(), AppDatabase.class, "database-name")
               //.addMigrations(MIGRATION_2_3)
               // .allowMainThreadQueries()

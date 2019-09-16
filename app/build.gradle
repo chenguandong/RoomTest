@@ -17,6 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    defaultConfig {
+        ndk {
+            // 只接入 armeabi-v7a 和 x86 架构
+            abiFilters 'armeabi-v7a', 'x86'
+        }
+    }
 }
 
 dependencies {
@@ -29,4 +36,10 @@ dependencies {
 
     implementation 'androidx.room:room-runtime:2.1.0'
     annotationProcessor  'androidx.room:room-compiler:2.1.0'
+
+    implementation 'com.tencent.wcdb:room:1.0.8'  // 代替 room-runtime，同时也不需要再引用 wcdb-android
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1' // compiler 需要用
+
+    // 修改"1.0.0"为实际引用的版本
+    implementation 'com.tencent.wcdb:wcdb-android:1.0.8'
 }
